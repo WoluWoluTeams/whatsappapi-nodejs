@@ -86,7 +86,7 @@ io.on('connection', function(socket) {
         socket.emit('message', 'Auth failure, restarting...');
       });
     
-      client.on('disconnected', (reason) => {
+    client.on('disconnected', (reason) => {
         socket.emit('message', 'Whatsapp is disconnected!');
         fs.unlinkSync(SESSION_FILE_PATH, function(err) {
             if(err) return console.log(err);
@@ -94,6 +94,7 @@ io.on('connection', function(socket) {
         });
         client.destroy();
         client.initialize();
+    });
 });
 
 const checkRegisteredNumber = async function(number) {
