@@ -82,19 +82,19 @@ io.on('connection', function(socket) {
         });
     });
 
-    client.on('auth_failure', function(session) {
-        socket.emit('message', 'Auth failure, restarting...');
-      });
+    // client.on('auth_failure', function(session) {
+    //     socket.emit('message', 'Auth failure, restarting...');
+    //   });
     
-    client.on('disconnected', (reason) => {
-        socket.emit('message', 'Whatsapp is disconnected!');
-        fs.unlinkSync(SESSION_FILE_PATH, function(err) {
-            if(err) return console.log(err);
-            console.log('Session file deleted!');
-        });
-        client.destroy();
-        client.initialize();
-    });
+    // client.on('disconnected', (reason) => {
+    //     socket.emit('message', 'Whatsapp is disconnected!');
+    //     fs.unlinkSync(SESSION_FILE_PATH, function(err) {
+    //         if(err) return console.log(err);
+    //         console.log('Session file deleted!');
+    //     });
+    //     client.destroy();
+    //     client.initialize();
+    // });
 });
 
 const checkRegisteredNumber = async function(number) {
